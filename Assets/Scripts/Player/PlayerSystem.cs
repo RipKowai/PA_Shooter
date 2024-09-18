@@ -30,7 +30,7 @@ public partial struct PlayerSystem : ISystem
         LocalTransform playerTransform = entityManager.GetComponentData<LocalTransform>(playerEntity);
         playerTransform.Position += new float3(inputComponent.movement * playerComponent.MoveSpeed * SystemAPI.Time.DeltaTime, 0);
 
-        Vector2 direction = (Vector2)inputComponent.mousePos - (Vector2)Camera.main.WorldToScreenPoint(playerTransform.Position);
+        Vector2 direction = (Vector2)inputComponent.mousePos - (Vector2)Camera.main.WorldToScreenPoint(playerTransform.Position) ;
         float angle = math.degrees(math.atan2(direction.y, direction.x));
         playerTransform.Rotation = Quaternion.AngleAxis(angle -90, Vector3.forward);
 
@@ -47,10 +47,12 @@ public partial struct PlayerSystem : ISystem
 
             Entity bulletEntity = entityManager.Instantiate(playerComponent.BulletPrefab);
 
+            ECB.AddComponent(bulletEntity, new BulletComponent { Speed = 10 });
+
             LocalTransform bulletTransform = entityManager.GetComponentData<LocalTransform>(bulletEntity);
             bulletTransform.Rotation = entityManager.GetComponentData<LocalTransform>(playerEntity).Rotation;
             LocalTransform playerTransform = entityManager.GetComponentData<LocalTransform>(playerEntity);
-            playerTransform.Position = playerTransform.Position + playerTransform.Right() + playerTransform.Up();
+            bulletTransform.Position = playerTransform.Position + playerTransform.Up(); 
             ECB.SetComponent(bulletEntity, bulletTransform);
 
             ECB.Playback(entityManager);

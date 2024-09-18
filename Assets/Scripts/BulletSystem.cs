@@ -17,7 +17,7 @@ public partial struct BulletSystem : ISystem
             {
                 LocalTransform bulletTransform = entityManager.GetComponentData<LocalTransform>(entity);
                 BulletComponent bulletComponent = entityManager.GetComponentData<BulletComponent>(entity);
-                bulletTransform.Position += bulletComponent.Speed * SystemAPI.Time.DeltaTime * bulletTransform.Right();
+                bulletTransform.Position += bulletComponent.Speed * SystemAPI.Time.DeltaTime * bulletTransform.Up();
                 entityManager.SetComponentData(entity, bulletTransform);
             }
         }

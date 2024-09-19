@@ -47,7 +47,7 @@ public partial struct PlayerSystem : ISystem
 
             Entity bulletEntity = entityManager.Instantiate(playerComponent.BulletPrefab);
 
-            ECB.AddComponent(bulletEntity, new BulletComponent { Speed = 10 });
+            ECB.AddComponent(bulletEntity, new BulletComponent { Speed = 10, Size = 0.2f });
 
             LocalTransform bulletTransform = entityManager.GetComponentData<LocalTransform>(bulletEntity);
             bulletTransform.Rotation = entityManager.GetComponentData<LocalTransform>(playerEntity).Rotation;

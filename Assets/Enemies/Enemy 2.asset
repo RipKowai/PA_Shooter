@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a04cca1dd141de141b4d0b116e765e95, type: 3}
-  m_Name: Enemy
+  m_Name: Enemy 2
   m_EditorClassIdentifier: 
   level: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 8842953832174866518, guid: d2531ae2a197d8c43a618b79294a1cea, type: 3}
   health: 0
   damage: 0
   moveSpeed: 0
